@@ -1,5 +1,3 @@
-https://mini-team2-home-project.vercel.app/
-
 # HR Risk Dashboard
 
 공공기관 데이터를 기반으로 직원의 **퇴사 위험도와 번아웃 위험을 분석하는 웹 대시보드 프로젝트**입니다.  
@@ -17,12 +15,12 @@ https://mini-team2-home-project.vercel.app/
 - 기관 평균 대비 위험 요인 분석
 - HR 의사결정을 위한 데이터 기반 대시보드 제공
 
-
 ## 🛠 Tech Stack
 
-<img width="1376" height="768" alt="architecture-diagram" src="https://github.com/user-attachments/assets/1d4db16e-3a67-4d38-a229-2d03a02d1b07" />
+![architecture-diagram](https://github.com/user-attachments/assets/1d4db16e-3a67-4d38-a229-2d03a02d1b07)
 
 ### Frontend
+
 - React
 - Axios
 - React Router
@@ -30,12 +28,15 @@ https://mini-team2-home-project.vercel.app/
 - Fatch API
 
 ### Backend
+
 - FastAPI (Python)
 
 ### Database
+
 - MariaDB
 
 ### Data & ML
+
 - Pandas
 - Scikit-learn
 - Joblib
@@ -44,9 +45,34 @@ https://mini-team2-home-project.vercel.app/
 
 ## 📂 Project Structure
 
+```text
+.
+├── backend-fastapi
+│   ├── pyproject.toml
+│   ├── README.md
+│   ├── requirements.txt
+│   ├── scripts
+│   ├── src
+│   └── uv.lock
+├── frontend
+│   ├── FETCH_HEAD
+│   ├── package.json
+│   ├── public
+│   ├── README.md
+│   └── src
+├── frontend-latest
+│   ├── node_modules
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── public
+│   └── src
+└── README.md
+```
+
 ## 🚀 Features
 
 ### 1️⃣ 기관 대시보드 조회
+
 기관명을 기준으로 다음 정보를 조회합니다.
 
 - 기관 정보
@@ -80,4 +106,3 @@ https://mini-team2-home-project.vercel.app/
 - 위험 요인 설명
 
 ---
-
