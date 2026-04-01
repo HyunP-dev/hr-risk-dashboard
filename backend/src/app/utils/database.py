@@ -11,6 +11,7 @@ host = os.getenv("DB_HOST")
 db_name = os.getenv("DB_NAME")
 
 
-db_info = f"mysql+pymysql://{user_id}:{password}@{host}/{db_name}"
+# db_info = f"mysql+pymysql://{user_id}:{password}@{host}/{db_name}"
+db_info = "sqlite:///dataset.db"
 engine = create_engine(db_info, connect_args={})
 print(engine)
