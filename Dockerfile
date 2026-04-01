@@ -6,17 +6,19 @@ RUN npm install
 
 COPY ./frontend-latest/public ./public
 COPY ./frontend-latest/src ./src
+COPY ./frontend-latest/index.html ./index.html
 RUN npm run build
 
-FROM python:3.11-slim
+FROM python:3.12-slim
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 WORKDIR /app
 COPY backend-fastapi/pyproject.toml ./
+COPY backend-fastapi/.python-version ./
 RUN uv sync
 
 COPY backend-fastapi/src ./src
-COPY --from=frontend-builder /app/frontend/build ./src/app/static
+COPY --from=frontend-builder /app/frontend/dist ./src/app/static
 
 RUN uv pip install -e .
-CMD ["uv" "run" "src/app/main.py"]
+CMD ["uv", "run", "src/app/main.py"]

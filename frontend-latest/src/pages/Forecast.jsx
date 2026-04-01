@@ -5,7 +5,7 @@ import GaugeChart from "../components/GaugeChart.jsx";
 import InputPanel from "../components/InputPanel.jsx";
 import ResultPanel from "../components/ResultPanel.jsx";
 
-import { predictEmployee } from "../api/PredictApi.js";
+import { predictEmployee } from "../api/PredictApi.jsx";
 
 function Forecast() {
   const [loading, setLoading] = useState(false);
