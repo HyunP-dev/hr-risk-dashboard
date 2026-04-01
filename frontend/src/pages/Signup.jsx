@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/Login.css"; // 같은 CSS 사용
+import "../css/Login.css";
+import { apiFetch } from "../utils/api";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -51,29 +52,27 @@ export default function Signup() {
 
   const handleSignup = async () => {
     try {
-      const response = await fetch("/api/signup", {
+      const response = await apiFetch("/api/signup", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password, institution }),
-
-        //institution
       });
+
       const data = await response.json();
+
       if (response.ok) {
         alert("회원가입이 완료되었습니다!");
-        navigate("/"); //이 뒤로 Home으로 이동인데 안 되네요.
+        navigate("/"); // Home 페이지로 이동
       } else {
-        // 더 만져보려다가 백엔드가 작업하는 게 나아보여서 냅둡니다.
-        alert(data.message || "회원가입에 실패했습니다."); // 아니면 준서님 백엔드 코드 제게 넘겨주세요.
+        alert(data.message || "회원가입에 실패했습니다.");
       }
     } catch (error) {
       console.error("회원가입 오류:", error);
+      alert("서버와 연결할 수 없습니다. 잠시 후 다시 시도해주세요.");
     }
   };
 
   return (
     <div className="login-page-wrapper">
-      {/* 화면 전체 중앙 정렬 코드니까 건들지 마세요 - 정은 올림. */}
       <div className="login-page">
         <div className="login-container">
           <h2 className="login-title">
@@ -83,6 +82,7 @@ export default function Signup() {
           </h2>
 
           <div className="form-area">
+            {/* 이메일 */}
             <label className="label">이메일</label>
             <div className="input-box">
               <input
@@ -94,6 +94,7 @@ export default function Signup() {
             </div>
             {emailError && <p className="error-text">{emailError}</p>}
 
+            {/* 비밀번호 */}
             <label className="label password-label">비밀번호</label>
             <div className="input-box">
               <input
@@ -105,6 +106,7 @@ export default function Signup() {
             </div>
             {pwError && <p className="error-text">{pwError}</p>}
 
+            {/* 비밀번호 확인 */}
             <label className="label password-label">비밀번호 확인</label>
             <div className="input-box">
               <input
@@ -116,6 +118,7 @@ export default function Signup() {
             </div>
             {pwCheckError && <p className="error-text">{pwCheckError}</p>}
 
+            {/* 기관 선택 */}
             <label className="label password-label">기관 선택</label>
             <div className="input-box">
               <select

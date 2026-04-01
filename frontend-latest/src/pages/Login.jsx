@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/Login.css";
+import { apiFetch } from "../utils/api";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -29,9 +30,8 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch("/api/login", {
+      const response = await apiFetch("/api/login", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
 
@@ -41,7 +41,6 @@ export default function Login() {
         console.log("로그인 응답 데이터:", data);
         if (data.institution) {
           localStorage.setItem("institution", data.institution);
-        } else {
         }
         alert(data.message);
         navigate("/mains");
@@ -50,6 +49,7 @@ export default function Login() {
       }
     } catch (error) {
       console.error("로그인 오류:", error);
+      alert("서버와 통신할 수 없습니다. 잠시 후 다시 시도해주세요.");
     }
   };
 
