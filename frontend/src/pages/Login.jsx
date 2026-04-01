@@ -29,24 +29,20 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      const response = await fetch(
-        "https://mini-team2-home-project.onrender.com/api/login",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password }),
-        },
-      );
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
       const data = await response.json();
 
       if (response.ok) {
         console.log("로그인 응답 데이터:", data);
-
         if (data.institution) {
           localStorage.setItem("institution", data.institution);
+        } else {
         }
-
         alert(data.message);
         navigate("/mains");
       } else {
