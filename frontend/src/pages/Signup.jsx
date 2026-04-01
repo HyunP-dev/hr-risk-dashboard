@@ -51,20 +51,22 @@ export default function Signup() {
 
   const handleSignup = async () => {
     try {
-      const response = await fetch("http://192.168.0.41:8000/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, institution }),
+      const response = await fetch(
+        "https://mini-team2-home-project.onrender.com/api/signup",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, password, institution }),
+        },
+      );
 
-        //institution
-      });
       const data = await response.json();
+
       if (response.ok) {
         alert("회원가입이 완료되었습니다!");
-        navigate("/"); //이 뒤로 Home으로 이동인데 안 되네요.
+        navigate("/");
       } else {
-        // 더 만져보려다가 백엔드가 작업하는 게 나아보여서 냅둡니다.
-        alert(data.message || "회원가입에 실패했습니다."); // 아니면 준서님 백엔드 코드 제게 넘겨주세요.
+        alert(data.message || "회원가입에 실패했습니다.");
       }
     } catch (error) {
       console.error("회원가입 오류:", error);
