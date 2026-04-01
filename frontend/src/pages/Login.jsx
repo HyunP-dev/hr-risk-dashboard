@@ -30,7 +30,6 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      // 공통 fetch 함수 사용
       const response = await apiFetch("/api/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),
@@ -40,9 +39,9 @@ export default function Login() {
 
       if (response.ok) {
         console.log("로그인 응답 데이터:", data);
-        if (data.institution)
+        if (data.institution) {
           localStorage.setItem("institution", data.institution);
-
+        }
         alert(data.message);
         navigate("/mains");
       } else {
@@ -50,7 +49,7 @@ export default function Login() {
       }
     } catch (error) {
       console.error("로그인 오류:", error);
-      alert("서버와 연결할 수 없습니다. 나중에 다시 시도해주세요.");
+      alert("서버와 통신할 수 없습니다. 잠시 후 다시 시도해주세요.");
     }
   };
 
@@ -64,6 +63,7 @@ export default function Login() {
         </h2>
 
         <div className="form-area">
+          {/* 이메일 */}
           <div>
             <label className="label">이메일</label>
             <div className="input-box">
@@ -77,6 +77,7 @@ export default function Login() {
             {emailError && <p className="error-text">{emailError}</p>}
           </div>
 
+          {/* 비밀번호 */}
           <div>
             <label className="label">비밀번호</label>
             <div className="input-box">
@@ -91,6 +92,7 @@ export default function Login() {
           </div>
         </div>
 
+        {/* 로그인 버튼 */}
         <button
           className="login-button"
           disabled={!isValid}
@@ -99,6 +101,7 @@ export default function Login() {
           로그인
         </button>
 
+        {/* 하단 영역 */}
         <div className="login-footer">
           계정이 없으신가요?
           <Link to="/signup" className="signup-link">

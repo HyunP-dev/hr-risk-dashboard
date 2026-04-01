@@ -1,13 +1,13 @@
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, HashRouter, Routes, Route, Navigate } from "react-router-dom";
 import "./css/App.css";
 import Home from "./pages/Home.jsx";
-import Mains from "./pages/Mains";
+import Mains from "./pages/Mains.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/mains/*" element={<Mains />}></Route>
@@ -15,7 +15,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<Navigate to="/" replace />}></Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

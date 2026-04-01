@@ -61,13 +61,13 @@ export default function Signup() {
 
       if (response.ok) {
         alert("회원가입이 완료되었습니다!");
-        navigate("/"); // Home 페이지로 이동
+        navigate("/"); // 홈으로 이동
       } else {
         alert(data.message || "회원가입에 실패했습니다.");
       }
     } catch (error) {
       console.error("회원가입 오류:", error);
-      alert("서버와 연결할 수 없습니다. 잠시 후 다시 시도해주세요.");
+      alert("서버와 통신할 수 없습니다. 잠시 후 다시 시도해주세요.");
     }
   };
 
@@ -82,7 +82,6 @@ export default function Signup() {
           </h2>
 
           <div className="form-area">
-            {/* 이메일 */}
             <label className="label">이메일</label>
             <div className="input-box">
               <input
@@ -94,7 +93,6 @@ export default function Signup() {
             </div>
             {emailError && <p className="error-text">{emailError}</p>}
 
-            {/* 비밀번호 */}
             <label className="label password-label">비밀번호</label>
             <div className="input-box">
               <input
@@ -106,7 +104,6 @@ export default function Signup() {
             </div>
             {pwError && <p className="error-text">{pwError}</p>}
 
-            {/* 비밀번호 확인 */}
             <label className="label password-label">비밀번호 확인</label>
             <div className="input-box">
               <input
@@ -118,7 +115,6 @@ export default function Signup() {
             </div>
             {pwCheckError && <p className="error-text">{pwCheckError}</p>}
 
-            {/* 기관 선택 */}
             <label className="label password-label">기관 선택</label>
             <div className="input-box">
               <select

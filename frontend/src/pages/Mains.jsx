@@ -1,19 +1,19 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { fetchDashboardData } from "../api/DashboardApi"; // DB 연결시 사용
+import { fetchDashboardData } from "../api/DashboardApi.jsx"; // DB 연결시 사용
 
-import Header from "./Header";
+import Header from "./Header.jsx";
 import "../css/Mains.css";
 import "../css/Header.css";
 
 import Forecast from "./Forecast.jsx";
-import SalaryCard from "../components/SalaryCard";
-import RecruitmentGaugeCard from "../components/RecruitmentGaugeCard";
-import WorkFlexibilityCard from "../components/WorkFlexibilityCard";
-import HealthDiagnosisCard from "../components/HealthDiagnosisCard";
-import RiskSignalCard from "../components/RiskSignalCard";
-import AttritionRiskCard from "../components/AttritionRiskCard";
-import HRBalanceChartCard from "../components/HRBalanceChartCard";
+import SalaryCard from "../components/SalaryCard.jsx";
+import RecruitmentGaugeCard from "../components/RecruitmentGaugeCard.jsx";
+import WorkFlexibilityCard from "../components/WorkFlexibilityCard.jsx";
+import HealthDiagnosisCard from "../components/HealthDiagnosisCard.jsx";
+import RiskSignalCard from "../components/RiskSignalCard.jsx";
+import AttritionRiskCard from "../components/AttritionRiskCard.jsx";
+import HRBalanceChartCard from "../components/HRBalanceChartCard.jsx";
 
 function Mains() {
   const [instInfo, setInstInfo] = useState({
