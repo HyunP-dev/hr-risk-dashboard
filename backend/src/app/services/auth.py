@@ -1,3 +1,5 @@
+import os
+
 from fastapi import HTTPException
 import firebase_admin
 import firebase_admin.auth
@@ -66,6 +68,7 @@ cred = firebase_admin.credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
 db = firebase_admin.firestore.client()
 
+FIREBASE_API_KEY = os.getenv("FIREBASE_API_KEY")
 
 class FirebaseAuthService:
     @staticmethod
@@ -92,8 +95,7 @@ class FirebaseAuthService:
 
     @staticmethod
     def login_user(email: str, password: str):
-        API_KEY = "AIzaSyCFgu7JQabI46Zee4uw8WjW5R1_J9x-ifM"
-        url = f"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={API_KEY}"
+        url = f"https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key={FIREBASE_API_KEY}"
     
         data = {
             "email": email,
