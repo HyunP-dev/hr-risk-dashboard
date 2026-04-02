@@ -23,8 +23,8 @@ app.add_middleware(
 app.include_router(institution_router, prefix="/api")
 app.include_router(analysis_router, prefix="/api")
 app.include_router(auth_router, prefix="/api")
-# app.mount("/", StaticFiles(directory="./src/app/static", html=True), name="static")
-app.mount("/", StaticFiles(directory="../frontend/dist", html=True), name="static")
+app.mount("/", StaticFiles(directory="./static", html=True), name="static")
+# app.mount("/", StaticFiles(directory="../frontend/dist", html=True), name="static")
 
 
 if __name__ == "__main__":
